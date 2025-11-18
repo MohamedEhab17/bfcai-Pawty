@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pawty/features/onboarding/presentation/view/onboarding_view_body.dart';
+import 'package:pawty/features/onboarding/presentation/widget/onboarding_view_body.dart';
 
 
 class OnboardingView extends StatelessWidget {

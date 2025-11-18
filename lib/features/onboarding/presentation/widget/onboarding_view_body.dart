@@ -40,7 +40,6 @@ class OnboardingViewBody extends StatelessWidget {
               radius: 10,
             ),
           ),
-
           Spacer(flex: 2),
         ],
       ),
