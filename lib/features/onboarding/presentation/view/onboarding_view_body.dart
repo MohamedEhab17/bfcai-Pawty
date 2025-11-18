@@ -23,7 +23,7 @@ class OnboardingViewBody extends StatelessWidget {
           Spacer(flex: 3),
           Text(
             "Your pet shop",
-            style: AppStyles.styleFredoka20.copyWith(
+            style: AppStyles.styleFredoka24Grey.copyWith(
               letterSpacing: 5,
               wordSpacing: 8,
             ),
