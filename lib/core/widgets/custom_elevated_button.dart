@@ -8,7 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
     super.key,
     required this.text,
     this.width = double.infinity,
-    this.height = double.infinity,
+    this.height =60 ,
     this.backgroundColor = AppColors.grey,
     this.textStyle,
     this.radius = 16,
@@ -27,7 +27,7 @@ class CustomElevatedButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width.w,
-        height: height.h,
+        height: height.w,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(radius),

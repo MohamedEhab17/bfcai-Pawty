@@ -11,8 +11,8 @@ class AssetsIcons {
   static const String iconsGuest = "assets/icons/guest.svg";
 
   /// Assets for iconsLogo
-  /// assets/icons/logo.png
-  static const String iconsLogo = "assets/icons/logo.png";
+  /// assets/images/logo.png
+  static const String iconsLogo = "assets/images/logo.png";
 
   /// Assets for iconsArrowDropDown
   /// assets/icons/arrow_drop_down.png
