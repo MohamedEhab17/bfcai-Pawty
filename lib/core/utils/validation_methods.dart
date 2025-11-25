@@ -30,3 +30,13 @@ String? validateEmailOrPhone(String? value) {
   }
   return 'Please enter a valid email or phone number';
 }
+
+  String? validateConfirmPassword(String? val, String? password) {
+    if (val == null || val.isEmpty) {
+      return 'Password cannot be empty';
+    } else if (val != password) {
+      return 'Confirm password must match the password';
+    } else {
+      return null;
+    }
+  }

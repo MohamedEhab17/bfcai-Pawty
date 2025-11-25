@@ -2,10 +2,14 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pawty/core/routers/app_router.dart';
+import 'package:pawty/features/auth/presentation/view/login_view.dart';
+import 'package:pawty/features/auth/presentation/view/signup_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
 
-void main() {
+void main()async{
   WidgetsFlutterBinding.ensureInitialized();
+    await AppRouter.initRouter();
   runApp(
    DevicePreview(
       enabled: !kReleaseMode,
@@ -25,12 +29,13 @@ class Pawty extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) =>
-       MaterialApp(
+       MaterialApp.router(
         title: 'Pawty',
+         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-        home: OnboardingView(),
+       
       ),
     );
   }

@@ -5,8 +5,8 @@ import 'package:pawty/core/utils/app_styles.dart';
 
 class TextFormFieldHelper extends StatefulWidget {
   final TextEditingController? controller;
-  final bool isPassword;
-  final String? hint, obscuringCharacter;
+  final bool isPassword ,isVisible;
+  final String? hint, obscuringCharacter , labelText,label;
   final bool enabled;
   final int? maxLines, minLines, maxLength;
   final String? Function(String?)? onValidate;
@@ -26,7 +26,10 @@ class TextFormFieldHelper extends StatefulWidget {
     super.key,
     this.controller,
     this.isPassword = false,
+    this.isVisible = false,
     this.hint,
+    this.label,
+    this.labelText,
     this.enabled = true,
     this.obscuringCharacter,
     this.onValidate,
@@ -78,68 +81,80 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.controller,
-      validator: widget.onValidate,
-      onChanged: (text) {
-        widget.onChanged?.call(text);
-        _updateTextDirection(text);
-      },
-      onEditingComplete: widget.onEditingComplete,
-      onFieldSubmitted: widget.onFieldSubmitted,
-      onSaved: widget.onSaved,
-      onTap: widget.onTap,
-      maxLines: widget.maxLines,
-      minLines: widget.minLines,
-      maxLength: widget.maxLength,
-      obscureText: obscureText,
-      obscuringCharacter: widget.obscuringCharacter ?? '*',
-
-      keyboardType: widget.keyboardType,
-      // inputFormatters: widget.inputFormatters,
-      enabled: widget.enabled,
-      textInputAction: widget.action ?? TextInputAction.next,
-      focusNode: widget.focusNode,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      style: AppStyles.styleInter12Grey,
-
-      textAlign: widget.isMobile != null ? TextAlign.left : TextAlign.start,
-
-      textDirection: widget.isMobile != null
-          ? TextDirection.ltr
-          : _textDirection,
-      textAlignVertical: TextAlignVertical.center,
-      decoration: InputDecoration(
-        fillColor: AppColors.white,
-        filled: true,
-        hintText: widget.hint,
-        hintStyle: AppStyles.styleInter12Grey.copyWith(
-          color: AppColors.grey[2],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Visibility(
+           visible: widget.isVisible,
+        child: Text(widget.label!,style: AppStyles.styleInter14Grey ,),
+       
         ),
-        errorMaxLines: 4,
-        errorStyle: const TextStyle(color: Colors.red),
-        prefixIcon: widget.prefixIcon,
-        prefix: widget.prefix,
-        suffixIcon: widget.isPassword
-            ? GestureDetector(
-                onTap: _toggleObscureText,
-                child: Icon(
-                  obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.grey,
-                  size: 27,
-                ),
-              )
-            : widget.suffixWidget,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 13,
-          vertical: 10,
+        TextFormField(
+          controller: widget.controller,
+          validator: widget.onValidate,
+          onChanged: (text) {
+            widget.onChanged?.call(text);
+            _updateTextDirection(text);
+          },
+          onEditingComplete: widget.onEditingComplete,
+          onFieldSubmitted: widget.onFieldSubmitted,
+          onSaved: widget.onSaved,
+          onTap: widget.onTap,
+          maxLines: widget.maxLines,
+          minLines: widget.minLines,
+          maxLength: widget.maxLength,
+          obscureText: obscureText,
+          obscuringCharacter: widget.obscuringCharacter ?? '*',
+        
+          keyboardType: widget.keyboardType,
+          // inputFormatters: widget.inputFormatters,
+          enabled: widget.enabled,
+          textInputAction: widget.action ?? TextInputAction.next,
+          focusNode: widget.focusNode,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          style: AppStyles.styleInter12Grey,
+        
+          textAlign: widget.isMobile != null ? TextAlign.left : TextAlign.start,
+        
+          textDirection: widget.isMobile != null
+              ? TextDirection.ltr
+              : _textDirection,
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+            fillColor: AppColors.white,
+            filled: true,
+            hintText: widget.hint,
+            labelText: widget.labelText,
+            labelStyle: AppStyles.styleInter14Grey,
+            hintStyle: AppStyles.styleInter12Grey.copyWith(
+              color: AppColors.grey[2],
+            ),
+            errorMaxLines: 4,
+            errorStyle: const TextStyle(color: Colors.red),
+            prefixIcon: widget.prefixIcon,
+            prefix: widget.prefix,
+            suffixIcon: widget.isPassword
+                ? GestureDetector(
+                    onTap: _toggleObscureText,
+                    child: Icon(
+                      obscureText ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.grey,
+                      size: 27,
+                    ),
+                  )
+                : widget.suffixWidget,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 13,
+              vertical: 10,
+            ),
+            border: outlineInputBorder(color: AppColors.pink, width: 1),
+            enabledBorder: outlineInputBorder(color: AppColors.pink, width: 1),
+            focusedBorder: outlineInputBorder(color: AppColors.pink, width: 1),
+            errorBorder: outlineInputBorder(color: Colors.red, width: 1),
+            focusedErrorBorder: outlineInputBorder(color: Colors.red, width: 1),
+          ),
         ),
-        border: outlineInputBorder(color: AppColors.pink, width: 1),
-        enabledBorder: outlineInputBorder(color: AppColors.pink, width: 1),
-        focusedBorder: outlineInputBorder(color: AppColors.pink, width: 1),
-        errorBorder: outlineInputBorder(color: Colors.red, width: 1),
-        focusedErrorBorder: outlineInputBorder(color: Colors.red, width: 1),
-      ),
+      ],
     );
   }
 
