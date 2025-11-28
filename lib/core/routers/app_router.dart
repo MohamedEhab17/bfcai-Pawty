@@ -3,6 +3,7 @@ import 'package:pawty/core/routers/app_route_paths.dart';
 import 'package:pawty/features/auth/presentation/view/login_view.dart';
 import 'package:pawty/features/auth/presentation/view/signup_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
+import 'package:pawty/features/profile/presentation/view/profile_setup_view.dart';
 
 class AppRouter {
   static late final GoRouter router;
@@ -26,11 +27,11 @@ class AppRouter {
           name: 'signup',
           builder: (context, state) => const SignupView(),
         ),
-        // GoRoute(
-        //   path: AppRoutesPaths.profileSetup,
-        //   name: 'profileSetup',
-        //   // builder: (context, state) => const ProfileSetupView(),
-        // ),
+        GoRoute(
+          path: AppRoutesPaths.profileSetup,
+          name: 'profileSetup',
+          builder: (context, state) => const ProfileSetupView(),
+        ),
         // GoRoute(
         //   path: AppRoutesPaths.rootView,
         //   name: 'home',

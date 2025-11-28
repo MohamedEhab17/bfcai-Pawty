@@ -5,8 +5,8 @@ import 'package:pawty/core/utils/app_styles.dart';
 
 class TextFormFieldHelper extends StatefulWidget {
   final TextEditingController? controller;
-  final bool isPassword ,isVisible;
-  final String? hint, obscuringCharacter , labelText,label;
+  final bool isPassword, isVisible;
+  final String? hint, obscuringCharacter, labelText, label;
   final bool enabled;
   final int? maxLines, minLines, maxLength;
   final String? Function(String?)? onValidate;
@@ -59,7 +59,7 @@ class TextFormFieldHelper extends StatefulWidget {
 
 class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
   late bool obscureText;
-  TextDirection _textDirection = TextDirection.rtl;
+  TextDirection _textDirection = TextDirection.ltr;
 
   @override
   void initState() {
@@ -85,9 +85,8 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Visibility(
-           visible: widget.isVisible,
-        child: Text(widget.label!,style: AppStyles.styleInter14Grey ,),
-       
+          visible: widget.isVisible,
+          child: Text(widget.label!, style: AppStyles.styleInter14Grey),
         ),
         TextFormField(
           controller: widget.controller,
@@ -105,7 +104,7 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
           maxLength: widget.maxLength,
           obscureText: obscureText,
           obscuringCharacter: widget.obscuringCharacter ?? '*',
-        
+          cursorColor: AppColors.pink,
           keyboardType: widget.keyboardType,
           // inputFormatters: widget.inputFormatters,
           enabled: widget.enabled,
@@ -113,9 +112,9 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
           focusNode: widget.focusNode,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           style: AppStyles.styleInter12Grey,
-        
+
           textAlign: widget.isMobile != null ? TextAlign.left : TextAlign.start,
-        
+
           textDirection: widget.isMobile != null
               ? TextDirection.ltr
               : _textDirection,

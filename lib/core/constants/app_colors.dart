@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   static const white = Color(0xffFFFFFF);
+ static const Color shadowColor =  Color(0x40000000);
   static const redButton = Color(0xffC01B02);
   static const MaterialColor pink = MaterialColor(0xffF191AC, <int, Color>{
     1: Color(0xffF4BBC9),
