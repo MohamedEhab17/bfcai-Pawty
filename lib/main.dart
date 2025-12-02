@@ -3,9 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/routers/app_router.dart';
-import 'package:pawty/features/auth/presentation/view/login_view.dart';
-import 'package:pawty/features/auth/presentation/view/signup_view.dart';
-import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
+
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();

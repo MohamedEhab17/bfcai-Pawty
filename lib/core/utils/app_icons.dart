@@ -25,4 +25,5 @@ class AssetsIcons {
   /// Assets for iconsSearch
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";
+
 }

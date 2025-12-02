@@ -32,6 +32,7 @@ class AppRouter {
           name: 'profileSetup',
           builder: (context, state) => const ProfileSetupView(),
         ),
+       
         // GoRoute(
         //   path: AppRoutesPaths.rootView,
         //   name: 'home',
