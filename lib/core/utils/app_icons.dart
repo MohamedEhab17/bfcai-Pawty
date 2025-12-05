@@ -16,14 +16,21 @@ class AssetsIcons {
 
   /// Assets for iconsArrowDropDown
   /// assets/icons/assets/icons/arrow_down.png
-    static const String iconsArrowDropDown = "assets/icons/arrow_down.png";
+  static const String iconsArrowDropDown = "assets/icons/arrow_down.png";
+
   /// Assets for iconsArrowUp
   /// assets/icons/arrow_up.png
-      static const String iconsArrowUp = "assets/icons/arrow_up.png";
+  static const String iconsArrowUp = "assets/icons/arrow_up.png";
 
-      
   /// Assets for iconsSearch
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";
 
+  /// Assets for iconsCalender
+  /// assets/icons/calendar.svg
+  static const String iconsCalender = "assets/icons/calendar.svg";
+
+  /// Assets for iconsLocation
+  /// assets/icons/location.svg
+  static const String iconsLocation = "assets/icons/location.svg";
 }
