@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pawty/core/routers/app_route_paths.dart';
 import 'package:pawty/features/auth/presentation/view/login_view.dart';
 import 'package:pawty/features/auth/presentation/view/signup_view.dart';
+import 'package:pawty/features/favourite/presentation/view/favourite_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
 import 'package:pawty/features/profile/presentation/view/profile_setup_view.dart';
 
@@ -10,7 +11,7 @@ class AppRouter {
 
   static Future<void> initRouter() async {
     router = GoRouter(
-      initialLocation: AppRoutesPaths.login,
+      initialLocation: AppRoutesPaths.favourite,
       routes: [
         GoRoute(
           path: AppRoutesPaths.login,
@@ -33,6 +34,11 @@ class AppRouter {
           builder: (context, state) => const ProfileSetupView(),
         ),
        
+  GoRoute(
+          path: AppRoutesPaths.favourite,
+          name: 'favouriteView',
+          builder: (context, state) => const FavouriteView(),
+        ),
         // GoRoute(
         //   path: AppRoutesPaths.rootView,
         //   name: 'home',
