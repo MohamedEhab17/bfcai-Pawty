@@ -21,6 +21,8 @@ class TextFormFieldHelper extends StatefulWidget {
 
   final BorderRadius? borderRadius;
   final bool? isMobile;
+  final Color? hintColor;
+  final Color? borderColor;
 
   const TextFormFieldHelper({
     super.key,
@@ -51,6 +53,8 @@ class TextFormFieldHelper extends StatefulWidget {
     this.focusNode,
     this.borderRadius,
     this.isMobile,
+    this.hintColor,
+    this.borderColor,
   });
 
   @override
@@ -123,8 +127,6 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
             fillColor: AppColors.white,
             filled: true,
             hintText: widget.hint,
-            labelText: widget.labelText,
-            labelStyle: AppStyles.styleInter14Grey,
             hintStyle: AppStyles.styleInter12Grey.copyWith(
               color: AppColors.grey[2],
             ),

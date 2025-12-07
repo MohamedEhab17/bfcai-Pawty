@@ -4,5 +4,5 @@ import 'package:flutter/material.dart';
 //* using : 16.height or 16.width
 extension SizeExtensions on num {
   Widget get height => SizedBox(height: toDouble());
-  Widget get width => SizedBox(height: toDouble());
+  Widget get width => SizedBox(width: toDouble());
 }

@@ -3,17 +3,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/routers/app_router.dart';
+import 'package:pawty/features/app_section/app_section.dart';
 
-
-void main()async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    await AppRouter.initRouter();
+  await AppRouter.initRouter();
   runApp(
-   DevicePreview(
+    DevicePreview(
       enabled: !kReleaseMode,
-      builder: (context) =>
-       Pawty(), // Wrap your app
-   ),
+      builder: (context) => Pawty(), // Wrap your app
+    ),
   );
 }
 
@@ -26,14 +25,12 @@ class Pawty extends StatelessWidget {
       designSize: const Size(411, 899),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) =>
-       MaterialApp.router(
+      builder: (context, child) => MaterialApp.router(
         title: 'Pawty',
-         routerConfig: AppRouter.router,
+        routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-       
       ),
     );
   }
