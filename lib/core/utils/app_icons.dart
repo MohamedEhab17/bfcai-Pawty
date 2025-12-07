@@ -26,4 +26,8 @@ class AssetsIcons {
   /// assets/icons/search.svg
   static const String iconsSearch = "assets/icons/search.svg";
 
+  /// Assets for iconsCamera
+  /// assets/icons/camera.svg
+  static const String iconsCamera = "assets/icons/camera.svg";
+
 }

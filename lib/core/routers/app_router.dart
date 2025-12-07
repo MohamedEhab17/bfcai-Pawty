@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:pawty/core/routers/app_route_paths.dart';
+import 'package:pawty/features/add_pet/presentation/view/add_pet_view.dart';
 import 'package:pawty/features/auth/presentation/view/login_view.dart';
 import 'package:pawty/features/auth/presentation/view/signup_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
@@ -10,7 +11,7 @@ class AppRouter {
 
   static Future<void> initRouter() async {
     router = GoRouter(
-      initialLocation: AppRoutesPaths.login,
+      initialLocation: AppRoutesPaths.addPetsView,
       routes: [
         GoRoute(
           path: AppRoutesPaths.login,
@@ -32,18 +33,17 @@ class AppRouter {
           name: 'profileSetup',
           builder: (context, state) => const ProfileSetupView(),
         ),
-       
+
         // GoRoute(
         //   path: AppRoutesPaths.rootView,
         //   name: 'home',
         //   // builder: (context, state) => const RootViewBody(),
         // ),
-
-        // GoRoute(
-        //   path: AppRoutesPaths.addPetsView,
-        //   name: 'addPetsView',
-        //   // builder: (context, state) => const AddPetView(),
-        // ),
+        GoRoute(
+          path: AppRoutesPaths.addPetsView,
+          name: 'addPetsView',
+          builder: (context, state) => AddPetView(),
+        ),
       ],
     );
   }

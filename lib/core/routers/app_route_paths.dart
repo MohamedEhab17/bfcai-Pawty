@@ -4,6 +4,6 @@ class AppRoutesPaths {
   static const String onboarding = '/onboardingView';
   static const String profileSetup = '/profileSetupView';
   static const String rootView = '/rootView';
-    static const String addPetsView = '/addPetsView';
+  static const String addPetsView = '/addPetsView';
     
 }
