@@ -17,4 +17,5 @@ abstract class AppColors {
     1: Color(0xff656161),
     2: Color(0xffD9D9D9),
   });
+  static Color shadowColor = Color(0xff6A6969).withAlpha(51);
 }

@@ -21,6 +21,8 @@ class TextFormFieldHelper extends StatefulWidget {
 
   final BorderRadius? borderRadius;
   final bool? isMobile;
+  final Color? hintColor;
+  final Color? borderColor;
 
   const TextFormFieldHelper({
     super.key,
@@ -48,6 +50,8 @@ class TextFormFieldHelper extends StatefulWidget {
     this.focusNode,
     this.borderRadius,
     this.isMobile,
+    this.hintColor,
+    this.borderColor,
   });
 
   @override
@@ -114,7 +118,7 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
         filled: true,
         hintText: widget.hint,
         hintStyle: AppStyles.styleInter12Grey.copyWith(
-          color: AppColors.grey[2],
+          color: widget.hintColor ?? AppColors.grey[2],
         ),
         errorMaxLines: 4,
         errorStyle: const TextStyle(color: Colors.red),
@@ -134,9 +138,18 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
           horizontal: 13,
           vertical: 10,
         ),
-        border: outlineInputBorder(color: AppColors.pink, width: 1),
-        enabledBorder: outlineInputBorder(color: AppColors.pink, width: 1),
-        focusedBorder: outlineInputBorder(color: AppColors.pink, width: 1),
+        border: outlineInputBorder(
+          color: widget.borderColor ?? AppColors.pink,
+          width: 1,
+        ),
+        enabledBorder: outlineInputBorder(
+          color: widget.borderColor ?? AppColors.pink,
+          width: 1,
+        ),
+        focusedBorder: outlineInputBorder(
+          color: widget.borderColor ?? AppColors.pink,
+          width: 1,
+        ),
         errorBorder: outlineInputBorder(color: Colors.red, width: 1),
         focusedErrorBorder: outlineInputBorder(color: Colors.red, width: 1),
       ),
