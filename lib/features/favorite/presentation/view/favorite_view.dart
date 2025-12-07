@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/constants/app_colors.dart';
 import 'package:pawty/core/utils/app_images.dart';
 import 'package:pawty/core/widgets/custom_elevated_button.dart';
-import 'package:pawty/features/favourite/presentation/view/widgets/custom_title.dart';
+import 'package:pawty/features/favorite/presentation/view/widgets/custom_title.dart';
 
-class FavouriteView extends StatelessWidget {
-  const FavouriteView({super.key});
+class FavoriteView extends StatelessWidget {
+  const FavoriteView({super.key});
 
   @override
   Widget build(BuildContext context) {

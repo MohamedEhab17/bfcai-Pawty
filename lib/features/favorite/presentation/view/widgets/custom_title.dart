@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pawty/core/utils/app_icons.dart';
 import 'package:pawty/core/utils/app_styles.dart';
-import 'package:pawty/features/favourite/presentation/view/widgets/info_row.dart';
+import 'package:pawty/features/favorite/presentation/view/widgets/info_row.dart';
 
 class CustomTitle extends StatelessWidget {
   const CustomTitle({

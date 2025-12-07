@@ -40,3 +40,29 @@ String? validateEmailOrPhone(String? value) {
       return null;
     }
   }
+
+String? validateAge(String? value) {
+  if (value == null || value.trim().isEmpty) {
+    return 'Age is required';
+  }
+  if (!RegExp(r'^[0-9]+$').hasMatch(value.trim())) {
+    return 'Age must be a number';
+  }
+  return null;
+}
+
+String? validateDescription(String? value) {
+  if (value == null || value.trim().isEmpty) {
+    return 'Description is required';
+  }
+  if (value.trim().length < 10) {
+    return 'Description must be at least 10 characters';
+  }
+  return null;
+}
+String? validateRequired(String? value, {String fieldName = "This field"}) {
+  if (value == null || value.trim().isEmpty) {
+    return '$fieldName is required';
+  }
+  return null;
+}

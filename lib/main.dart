@@ -25,7 +25,8 @@ class Pawty extends StatelessWidget {
       designSize: const Size(411, 899),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => MaterialApp.router(
+      builder: (context, child) =>
+      MaterialApp.router(
         title: 'Pawty',
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,

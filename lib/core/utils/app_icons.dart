@@ -34,4 +34,8 @@ class AssetsIcons {
   /// Assets for iconsLocation
   /// assets/icons/location.svg
   static const String iconsLocation = "assets/icons/location.svg";
+  /// Assets for iconsCamera
+  /// assets/icons/camera.svg
+  static const String iconsCamera = "assets/icons/camera.svg";
+
 }

@@ -39,10 +39,7 @@ class _CustomDropdownMenuContainerState
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(widget.labelText, style: AppStyles.styleInter14Grey),
-        ),
+        Text(widget.labelText, style: AppStyles.styleInter14Grey),
         GestureDetector(
           onTap: () {
             setState(() {
@@ -62,18 +59,14 @@ class _CustomDropdownMenuContainerState
                   color: AppColors.shadowColor,
                   spreadRadius: 0,
                   blurRadius: 4,
-                  offset: Offset(0, 4),
+                  offset: Offset(0, 2),
                 ),
               ],
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  selectedValue ?? "",
-                  style: AppStyles.styleInter12Grey
-                    
-                ),
+                Text(selectedValue ?? "", style: AppStyles.styleInter12Grey),
                 Image.asset(
                   isDropped
                       ? AssetsIcons.iconsArrowUp
@@ -100,24 +93,18 @@ class _CustomDropdownMenuContainerState
               ],
             ),
             child: Column(
-              children:
-                  widget.items.map((item) {
-                    return ListTile(
-                      title: Text(
-                        item,
-                        style: AppStyles.styleInter12Grey
-                          
-                        
-                      ),
-                      onTap: () {
-                        setState(() {
-                          selectedValue = item;
-                          isDropped = false;
-                        });
-                        widget.onChanged?.call(item);
-                      },
-                    );
-                  }).toList(),
+              children: widget.items.map((item) {
+                return ListTile(
+                  title: Text(item, style: AppStyles.styleInter12Grey),
+                  onTap: () {
+                    setState(() {
+                      selectedValue = item;
+                      isDropped = false;
+                    });
+                    widget.onChanged?.call(item);
+                  },
+                );
+              }).toList(),
             ),
           ),
       ],
