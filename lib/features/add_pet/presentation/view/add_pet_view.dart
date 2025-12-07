@@ -13,34 +13,13 @@ import 'package:pawty/core/widgets/text_form_field_helper.dart';
 import 'package:pawty/features/add_pet/presentation/view/widgets/custom_upload_image.dart';
 
 class AddPetView extends StatefulWidget {
-const  AddPetView({super.key});
+  const AddPetView({super.key});
 
   @override
   State<AddPetView> createState() => _AddPetViewState();
 }
 
 class _AddPetViewState extends State<AddPetView> {
-  final TextEditingController petNameController = TextEditingController();
-
-  final TextEditingController petAgeController = TextEditingController();
-
-  final TextEditingController petLocationController = TextEditingController();
-
-  final TextEditingController petDescriptionController =TextEditingController();
-
-  String? gender;
-
-  String? petType;
-
-  final GlobalKey<FormState> addPetKey = GlobalKey<FormState>();
-@override
-  void dispose() {
-    petNameController.dispose();
-    petAgeController.dispose();
-    petLocationController.dispose();
-    petDescriptionController.dispose();
-    super.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,7 +114,6 @@ class _AddPetViewState extends State<AddPetView> {
                   onTap: () {
                     if (addPetKey.currentState!.validate()) {
                       log('Add Pet Successfully');
-                     
                     }
                   },
                   backgroundColor: AppColors.pink,
@@ -146,5 +124,37 @@ class _AddPetViewState extends State<AddPetView> {
         ),
       ),
     );
+  }
+
+  late final TextEditingController petNameController;
+  late final TextEditingController petAgeController;
+  late final TextEditingController petLocationController;
+  late final TextEditingController petDescriptionController;
+  late final GlobalKey<FormState> addPetKey;
+
+  String? gender;
+
+  String? petType;
+
+  @override
+  initState() {
+    super.initState();
+
+    petNameController = TextEditingController();
+    petAgeController = TextEditingController();
+    petLocationController = TextEditingController();
+    petDescriptionController = TextEditingController();
+
+    addPetKey = GlobalKey<FormState>();
+  }
+
+  @override
+  void dispose() {
+    petNameController.dispose();
+    petAgeController.dispose();
+    petLocationController.dispose();
+    petDescriptionController.dispose();
+    addPetKey.currentState?.dispose();
+    super.dispose();
   }
 }

@@ -27,13 +27,13 @@ class Pawty extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) =>
-       MaterialApp.router(
+      MaterialApp.router(
         title: 'Pawty',
-         routerConfig: AppRouter.router,
+        routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-       
+      
       ),
     );
   }
