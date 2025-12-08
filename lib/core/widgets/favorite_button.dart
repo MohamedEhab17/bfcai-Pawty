@@ -3,8 +3,9 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:pawty/core/constants/app_colors.dart';
 
 class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({super.key, this.size});
+  const FavoriteButton({super.key, this.size, this.inactiveIconColor});
   final double? size;
+  final Color? inactiveIconColor;
 
   @override
   State<FavoriteButton> createState() => _FavoriteButtonState();
@@ -20,8 +21,10 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         setState(() {});
       },
       child: Icon(
-        isFavorite ? IconlyBold.heart : IconlyBold.heart,
-        color: isFavorite ? AppColors.pink : Colors.white,
+        isFavorite ? IconlyBold.heart : IconlyLight.heart,
+        color: isFavorite
+            ? AppColors.pink
+            : widget.inactiveIconColor ?? Colors.white,
         size: widget.size ?? 20,
       ),
     );

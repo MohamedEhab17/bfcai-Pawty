@@ -45,14 +45,26 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
                 child: Image.asset(AssetsImages.imagesAvatar),
               ),
               6.width,
-              Text('Rawan', style: AppStyles.styleInter12White),
+              Expanded(
+                child: Text(
+                  'Rawan',
+                  style: AppStyles.styleInter12White,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
               Spacer(),
               Icon(Icons.more_vert, color: AppColors.white),
             ],
           ),
           // SizedBox(height: 78.h),
           Spacer(),
-          Text("Milo", style: AppStyles.styleFredoka32.copyWith(height: 1.2)),
+          Text(
+            "Milo",
+            style: AppStyles.styleFredoka32.copyWith(height: 1.2),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +72,15 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Cavapoo dog", style: AppStyles.styleInter16White),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      "Cavapoo dog",
+                      style: AppStyles.styleInter16White,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                   Row(
                     children: [
                       FavoriteButton(),

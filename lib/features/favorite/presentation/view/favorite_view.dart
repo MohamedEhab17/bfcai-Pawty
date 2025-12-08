@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/constants/app_colors.dart';
 import 'package:pawty/core/utils/app_images.dart';
 import 'package:pawty/core/widgets/custom_elevated_button.dart';
+import 'package:pawty/core/widgets/favorite_button.dart';
 import 'package:pawty/features/favorite/presentation/view/widgets/custom_title.dart';
 
 class FavoriteView extends StatelessWidget {
@@ -31,7 +32,7 @@ class FavoriteView extends StatelessWidget {
             ],
           ),
           child: Column(
-            spacing: 5,
+            spacing: 12,
             children: [
               Row(
                 spacing: 5,
@@ -52,7 +53,9 @@ class FavoriteView extends StatelessWidget {
                         right: -10,
                         child: CircleAvatar(
                           backgroundColor: AppColors.white,
-                          child: Icon(Icons.favorite, color: AppColors.pink),
+                          child: FavoriteButton(
+                            inactiveIconColor: AppColors.grey,
+                          ),
                         ),
                       ),
                     ],
@@ -69,7 +72,7 @@ class FavoriteView extends StatelessWidget {
                 text: 'View Details',
                 onTap: () {},
                 backgroundColor: AppColors.pink,
-                height: 35.h,
+                height: 40.h,
               ),
             ],
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pawty/features/profile/presentation/view/widgets/profile_setup_body.dart';
+import 'package:pawty/features/profile_setup/presentation/view/widgets/profile_setup_body.dart';
 
 
 class ProfileSetupView extends StatelessWidget {

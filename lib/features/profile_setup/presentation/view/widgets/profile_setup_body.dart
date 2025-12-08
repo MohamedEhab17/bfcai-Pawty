@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pawty/core/constants/app_colors.dart';
@@ -12,8 +13,10 @@ import 'package:pawty/core/widgets/custom_container_fields.dart';
 import 'package:pawty/core/widgets/custom_elevated_button.dart';
 import 'package:pawty/core/widgets/custom_modal_progress_hud.dart';
 import 'package:pawty/core/widgets/text_form_field_helper.dart';
-import 'package:pawty/core/widgets/custom_dropdown_menu_container.dart';
-import 'package:pawty/features/profile/presentation/view/widgets/custom_upload_image_widget.dart';
+import 'package:pawty/features/profile_setup/presentation/view/widgets/custom_upload_image_widget.dart';
+import 'package:pawty/shared/popup_form/view/custom_drop_down.dart';
+import 'package:pawty/shared/popup_form/view_model/cubit/popup_form_cubit_cubit.dart';
+import 'package:pawty/shared/popup_form/view_model/cubit/popup_form_state.dart';
 
 class ProfileSetupBody extends StatefulWidget {
   const ProfileSetupBody({super.key});
@@ -81,22 +84,37 @@ class _ProfileSetupBodyState extends State<ProfileSetupBody> {
                       keyboardType: TextInputType.datetime,
                     ),
                     20.height,
-
-                    CustomDropdownMenuContainer(
-                      labelText: "Gender",
-                      items: ConstantLists.gender,
-                      initialValue: "male/female",
-                      onChanged: (value) {
-                        gender = value;
+                    BlocBuilder<PopupFormCubit, PopupFormState>(
+                      builder: (context, state) {
+                        return CustomDropdown(
+                          items: ConstantLists.gender,
+                          value: gender,
+                          hintText: 'Male/Female',
+                          onChanged: (String? value) {
+                            gender = value!;
+                            context.read<PopupFormCubit>().setValue(
+                              'userGender',
+                              value,
+                            );
+                          },
+                        );
                       },
                     ),
                     20.height,
-                    CustomDropdownMenuContainer(
-                      labelText: "Country",
-                      items: ConstantLists.countries,
-                      initialValue: "USA",
-                      onChanged: (value) {
-                        country = value;
+                    BlocBuilder<PopupFormCubit, PopupFormState>(
+                      builder: (context, state) {
+                        return CustomDropdown(
+                          items: ConstantLists.countries,
+                          value: country,
+                          hintText: 'select Country',
+                          onChanged: (String? value) {
+                            country = value!;
+                            context.read<PopupFormCubit>().setValue(
+                              'userCountry',
+                              value,
+                            );
+                          },
+                        );
                       },
                     ),
                     30.height,

@@ -1,19 +1,26 @@
 import 'package:go_router/go_router.dart';
 import 'package:pawty/core/routers/app_route_paths.dart';
 import 'package:pawty/features/add_pet/presentation/view/add_pet_view.dart';
+import 'package:pawty/features/app_section/presentation/view/app_section_view.dart';
 import 'package:pawty/features/auth/presentation/view/login_view.dart';
 import 'package:pawty/features/auth/presentation/view/signup_view.dart';
 import 'package:pawty/features/favorite/presentation/view/favorite_view.dart';
+import 'package:pawty/features/home/presentation/view/home_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
-import 'package:pawty/features/profile/presentation/view/profile_setup_view.dart';
+import 'package:pawty/features/profile_setup/presentation/view/profile_setup_view.dart';
 
 class AppRouter {
   static late final GoRouter router;
 
   static Future<void> initRouter() async {
     router = GoRouter(
-      initialLocation: AppRoutesPaths.addPetsView,
+      initialLocation: AppRoutesPaths.appSectionView,
       routes: [
+        GoRoute(
+          path: AppRoutesPaths.appSectionView,
+          name: '/',
+          builder: (context, state) =>  AppSectionView(),
+        ),
         GoRoute(
           path: AppRoutesPaths.login,
           name: 'login',
@@ -34,17 +41,17 @@ class AppRouter {
           name: 'profileSetup',
           builder: (context, state) => const ProfileSetupView(),
         ),
-    
+
         GoRoute(
-          path: AppRoutesPaths.favorite,
+          path: AppRoutesPaths.favoriteView,
           name: 'favoriteView',
           builder: (context, state) => const FavoriteView(),
         ),
-        // GoRoute(
-        //   path: AppRoutesPaths.rootView,
-        //   name: 'home',
-        //   // builder: (context, state) => const RootViewBody(),
-        // ),
+        GoRoute(
+          path: AppRoutesPaths.rootView,
+          name: 'home',
+          builder: (context, state) => const HomeView(),
+        ),
         GoRoute(
           path: AppRoutesPaths.addPetsView,
           name: 'addPetsView',

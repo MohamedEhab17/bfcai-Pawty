@@ -18,7 +18,6 @@ class AssetsIcons {
   /// assets/icons/assets/icons/arrow_down.png
   static const String iconsArrowDropDown = "assets/icons/arrow_down.png";
 
-
   /// Assets for iconsArrowUp
   /// assets/icons/arrow_up.png
   static const String iconsArrowUp = "assets/icons/arrow_up.png";
@@ -34,8 +33,8 @@ class AssetsIcons {
   /// Assets for iconsLocation
   /// assets/icons/location.svg
   static const String iconsLocation = "assets/icons/location.svg";
+
   /// Assets for iconsCamera
   /// assets/icons/camera.svg
   static const String iconsCamera = "assets/icons/camera.svg";
-
 }

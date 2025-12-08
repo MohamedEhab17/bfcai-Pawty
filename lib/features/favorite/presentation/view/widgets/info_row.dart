@@ -11,12 +11,23 @@ class InfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      spacing: 5,
       children: [
         SvgPicture.asset(
           iconPath,
           colorFilter: ColorFilter.mode(AppColors.pink, BlendMode.srcIn),
+          width: 16,
+          height: 16,
         ),
-        Text(text, style: AppStyles.styleInter12Grey),
+        Expanded(
+          child: Text(
+            text,
+            style: AppStyles.styleInter12Grey,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
       ],
     );
   }

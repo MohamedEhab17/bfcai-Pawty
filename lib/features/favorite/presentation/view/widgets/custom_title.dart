@@ -19,7 +19,12 @@ class CustomTitle extends StatelessWidget {
         spacing: 5,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(name, style: AppStyles.styleInter16black1),
+          Text(
+            name,
+            style: AppStyles.styleInter16black1,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
           Text(type, style: AppStyles.styleInter12Grey),
           InfoRow(iconPath: AssetsIcons.iconsCalender, text: age),
           InfoRow(iconPath: AssetsIcons.iconsLocation, text: location),

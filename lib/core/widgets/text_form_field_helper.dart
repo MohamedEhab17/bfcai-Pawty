@@ -21,7 +21,7 @@ class TextFormFieldHelper extends StatefulWidget {
 
   final BorderRadius? borderRadius;
   final bool? isMobile;
-  final Color? hintColor;
+  final TextStyle? hintStyle;
   final Color? borderColor;
 
   const TextFormFieldHelper({
@@ -53,7 +53,7 @@ class TextFormFieldHelper extends StatefulWidget {
     this.focusNode,
     this.borderRadius,
     this.isMobile,
-    this.hintColor,
+    this.hintStyle,
     this.borderColor,
   });
 
@@ -90,7 +90,7 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
       children: [
         Visibility(
           visible: widget.isVisible,
-          child: Text(widget.label!, style: AppStyles.styleInter14Grey),
+          child: Text(widget.label ?? "", style: AppStyles.styleInter14Grey),
         ),
         TextFormField(
           controller: widget.controller,
@@ -127,9 +127,9 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
             fillColor: AppColors.white,
             filled: true,
             hintText: widget.hint,
-            hintStyle: AppStyles.styleInter12Grey.copyWith(
-              color: AppColors.grey[2],
-            ),
+            hintStyle:
+                widget.hintStyle ??
+                AppStyles.styleInter12Grey.copyWith(color: AppColors.grey[2]),
             errorMaxLines: 4,
             errorStyle: const TextStyle(color: Colors.red),
             prefixIcon: widget.prefixIcon,
@@ -148,9 +148,18 @@ class _TextFormFieldHelperState extends State<TextFormFieldHelper> {
               horizontal: 13,
               vertical: 10,
             ),
-            border: outlineInputBorder(color: AppColors.pink, width: 1),
-            enabledBorder: outlineInputBorder(color: AppColors.pink, width: 1),
-            focusedBorder: outlineInputBorder(color: AppColors.pink, width: 1),
+            border: outlineInputBorder(
+              color: widget.borderColor ?? AppColors.pink,
+              width: 1,
+            ),
+            enabledBorder: outlineInputBorder(
+              color: widget.borderColor ?? AppColors.pink,
+              width: 1,
+            ),
+            focusedBorder: outlineInputBorder(
+              color: widget.borderColor ?? AppColors.pink,
+              width: 1,
+            ),
             errorBorder: outlineInputBorder(color: Colors.red, width: 1),
             focusedErrorBorder: outlineInputBorder(color: Colors.red, width: 1),
           ),
