@@ -69,29 +69,31 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Text(
-                      "Cavapoo dog",
-                      style: AppStyles.styleInter16White,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      FavoriteButton(),
-                      6.width,
-                      Text(
-                        'add to favorites',
-                        style: AppStyles.styleInter12White,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: Text(
+                        "Cavapoo dog",
+                        style: AppStyles.styleInter16White,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    Row(
+                      children: [
+                        FavoriteButton(),
+                        6.width,
+                        Text(
+                          'add to favorites',
+                          style: AppStyles.styleInter12White,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
 
               // Spacer(),

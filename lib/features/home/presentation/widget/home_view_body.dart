@@ -40,7 +40,7 @@ class _HomeViewBodyState extends State<HomeViewBody>
             SliverToBoxAdapter(child: CustomTabBar()),
             SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
+                crossAxisCount: MediaQuery.sizeOf(context).width > 600 ? 2 : 1,
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 6,
                 childAspectRatio: 358.h / 210.w,
