@@ -37,4 +37,32 @@ class AssetsIcons {
   /// Assets for iconsCamera
   /// assets/icons/camera.svg
   static const String iconsCamera = "assets/icons/camera.svg";
+
+  /// Assets for iconsAboutUs
+  /// assets/icons/about_us.png
+  static const String iconsAboutUs = "assets/icons/about_us.png";
+
+  /// Assets for iconsAppointments
+  /// assets/icons/appointments.png
+  static const String iconsAppointments = "assets/icons/appointments.png";
+
+  /// Assets for iconsHelpCenter
+  /// assets/icons/help_center.png
+  static const String iconsHelpCenter = "assets/icons/help_center.png";
+
+  /// Assets for iconsManageProfile
+  /// assets/icons/manage_profile.png
+  static const String iconsManageProfile = "assets/icons/manage_profile.png";
+
+  /// Assets for iconsPassword
+  /// assets/icons/password.png
+  static const String iconsPassword = "assets/icons/password.png";
+
+  /// Assets for iconsTheme
+  /// assets/icons/theme.png
+  static const String iconsTheme = "assets/icons/theme.png";
+
+  /// Assets for iconsLanguage
+  /// assets/icons/language.png
+  static const String iconsLanguage = "assets/icons/language.png";
 }

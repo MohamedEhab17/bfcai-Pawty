@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:pawty/core/constants/app_colors.dart';
 import 'package:pawty/features/app_section/data/model/app_tab.dart';
 import 'package:pawty/features/app_section/presentation/widgets/floating_nav_bar.dart';
 import 'package:pawty/features/app_section/presentation/widgets/scroll_visibility_wrapper.dart';
 import 'package:pawty/features/home/presentation/view/home_view.dart';
 import 'package:pawty/features/favorite/presentation/view/favorite_view.dart';
 import 'package:pawty/features/add_pet/presentation/view/add_pet_view.dart';
+import 'package:pawty/features/profile/presentation/view/profile_view.dart';
 import '../view_model/cubit/bottom_nav_cubit.dart';
 
 class AppSectionView extends StatefulWidget {
@@ -33,7 +35,7 @@ class _AppSectionViewState extends State<AppSectionView> {
       AppTab(icon: IconlyBold.heart, view: const FavoriteView()),
       AppTab(icon: Icons.add_circle_outline_rounded, view: const AddPetView()),
       AppTab(icon: IconlyBold.notification, view: const Scaffold()),
-      AppTab(icon: Icons.person, view: const Scaffold()),
+      AppTab(icon: Icons.person, view: const ProfileView()),
     ];
   }
 
@@ -56,7 +58,9 @@ class _AppSectionViewState extends State<AppSectionView> {
       child: BlocBuilder<BottomNavCubit, BottomNavState>(
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: state.index == 4
+                ? AppColors.grey[3]
+                : AppColors.white,
             body: Stack(
               children: [
                 PageView.builder(
