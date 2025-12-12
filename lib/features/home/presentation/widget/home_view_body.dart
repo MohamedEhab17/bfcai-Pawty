@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pawty/core/utils/app_images.dart';
+import 'package:pawty/core/widgets/paws_separator.dart';
 import 'package:pawty/features/home/presentation/widget/home_header.dart';
 import 'package:pawty/features/home/presentation/widget/custom_search_bar.dart';
 import 'package:pawty/features/home/presentation/widget/custom_tab_bar.dart';
@@ -28,13 +28,7 @@ class _HomeViewBodyState extends State<HomeViewBody>
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.only(right: 16, bottom: 25),
-                child: Center(
-                  child: Image.asset(
-                    AssetsImages.imagesPaws,
-                    width: 200.w,
-                    height: 15.h,
-                  ),
-                ),
+                child: PawsSeparator(),
               ),
             ),
             SliverToBoxAdapter(child: CustomTabBar()),
@@ -56,3 +50,5 @@ class _HomeViewBodyState extends State<HomeViewBody>
     );
   }
 }
+
+

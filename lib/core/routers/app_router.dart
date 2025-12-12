@@ -4,6 +4,7 @@ import 'package:pawty/features/add_pet/presentation/view/add_pet_view.dart';
 import 'package:pawty/features/app_section/presentation/view/app_section_view.dart';
 import 'package:pawty/features/auth/presentation/view/login_view.dart';
 import 'package:pawty/features/auth/presentation/view/signup_view.dart';
+import 'package:pawty/features/details/presentation/view/details_view.dart';
 import 'package:pawty/features/favorite/presentation/view/favorite_view.dart';
 import 'package:pawty/features/home/presentation/view/home_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
@@ -56,6 +57,11 @@ class AppRouter {
           path: AppRoutesPaths.addPetsView,
           name: 'addPetsView',
           builder: (context, state) => AddPetView(),
+        ),
+        GoRoute(
+          path: AppRoutesPaths.detailsView,
+          name: 'detailsView',
+          builder: (context, state) => DetailsView(),
         ),
       ],
     );

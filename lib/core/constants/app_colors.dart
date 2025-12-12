@@ -9,6 +9,7 @@ abstract class AppColors {
     2: Color(0xffFAE6E7),
     3: Color(0xffFBEDEE),
     4: Color(0xffF7EEED),
+    5: Color(0xffB57285)
     
   });
   static const MaterialColor black = MaterialColor(0xff000000, <int, Color>{
