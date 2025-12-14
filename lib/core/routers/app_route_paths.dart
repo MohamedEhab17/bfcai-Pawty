@@ -8,4 +8,5 @@ class AppRoutesPaths {
   static const String favoriteView = '/favoriteView';
   static const String homeView = '/homeView';
   static const String appSectionView = '/appSectionView';
+   static const String detailsView = '/detailsView';
 }

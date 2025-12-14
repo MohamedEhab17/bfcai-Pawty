@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pawty/core/constants/app_colors.dart';
 import 'package:pawty/core/extensions/padding_ex.dart';
 import 'package:pawty/core/extensions/sized_box_ex.dart';
+import 'package:pawty/core/routers/app_route_paths.dart';
 import 'package:pawty/core/utils/app_images.dart';
 import 'package:pawty/core/utils/app_styles.dart';
 import 'package:pawty/core/widgets/favorite_button.dart';
@@ -98,7 +100,9 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
 
               // Spacer(),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push(AppRoutesPaths.detailsView);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.pink[2]!.withAlpha(178),
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 9),

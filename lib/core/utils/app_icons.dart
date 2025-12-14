@@ -65,4 +65,12 @@ class AssetsIcons {
   /// Assets for iconsLanguage
   /// assets/icons/language.png
   static const String iconsLanguage = "assets/icons/language.png";
+ /// Assets for iconsChat
+  /// assets/icons/chat.svg
+  static const String iconsChat = "assets/icons/chat.svg";
+
+
+ /// Assets for iconsPhone
+  /// assets/icons/phone.svg
+  static const String iconsPhone = "assets/icons/phone.svg";  
 }
