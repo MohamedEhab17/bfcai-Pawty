@@ -16,9 +16,9 @@ class AuthFirebase {
       return NetworkSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        throw Exception('No user found for that email.');
+        return NetworkError('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        throw Exception('Wrong password provided for that user.');
+        return NetworkError('Wrong password provided for that user.');
       }
       return NetworkError(e.toString());
     } catch (e) {
@@ -35,9 +35,9 @@ class AuthFirebase {
       return NetworkSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw Exception('The password provided is too weak.');
+       return NetworkError('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        throw Exception('The account already exists for that email.');
+        return NetworkError('The account already exists for that email.');
       }
        return NetworkError(e.toString());
     } catch (e) {
