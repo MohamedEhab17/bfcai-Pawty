@@ -6,5 +6,6 @@ import 'package:pawty/features/auth/data/models/request/user_model_dto.dart';
 abstract class AuthRemoteDataSourceContract {
   Future<NetworkResult<void>> register(RegisterRequestDto registerRequestDto);
   Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto);
-  Future<NetworkResult<void>> addUser( UserModelDto userModelDto);
+  Future<NetworkResult<void>> addUser(UserModelDto userModelDto);
+  Future<NetworkResult<void>> updateUserProfile(UserModelDto updatedUser);
 }

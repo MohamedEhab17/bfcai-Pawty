@@ -17,8 +17,12 @@ class AuthRepositoryImp implements AuthRepositoryContract {
   Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto) =>
       _authRemoteDataSourceContract.login(loginRequestDto);
       
-        @override
-        Future<NetworkResult<void>> addUser(UserModelDto userModelDto)=> _authRemoteDataSourceContract.addUser(userModelDto);
+  @override
+  Future<NetworkResult<void>> addUser(UserModelDto userModelDto)=> _authRemoteDataSourceContract.addUser(userModelDto);
+
+  @override
+  Future<NetworkResult<void>> updateUserProfile(UserModelDto updatedUser) =>
+      _authRemoteDataSourceContract.updateUserProfile(updatedUser);
 }
 
 AuthRepositoryContract repositoryInjectable() =>

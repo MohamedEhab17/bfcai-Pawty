@@ -26,11 +26,9 @@ void main() async {
           BlocProvider(
             create: (context) => RegisterCubit(repositoryInjectable()),
           ),
-           BlocProvider(
-            create: (context) => LoginCubit(repositoryInjectable()),
-          ),
-           BlocProvider(
-            create: (context) =>ProfileSetupCubit(repositoryInjectable()),
+          BlocProvider(create: (context) => LoginCubit(repositoryInjectable())),
+          BlocProvider(
+            create: (context) => ProfileSetupCubit(repositoryInjectable()),
           ),
         ],
         child: Pawty(),

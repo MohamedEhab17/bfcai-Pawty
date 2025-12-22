@@ -21,6 +21,10 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSourceContract {
   @override
   Future<NetworkResult<void>> addUser(UserModelDto userModelDto) =>
       _authFirebase.addUser(userModelDto);
+
+  @override
+  Future<NetworkResult<void>> updateUserProfile(UserModelDto updatedUser) =>
+      _authFirebase.updateUserProfile(updatedUser);
 }
 
 

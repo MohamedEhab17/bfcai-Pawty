@@ -28,38 +28,15 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
-  TextEditingController emailOrPhoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> signinFormKey = GlobalKey<FormState>();
-
-  bool rememberme = false;
-
-  @override
-  void initState() {
-    super.initState();
-    // _loadRememberedUser();
-  }
-
-  // Future<void> _loadRememberedUser() async {
-  //   final data = await SharedPrefsServices.getRememberMe();
-  //   if (data != null && data.rememberMe) {
-  //     emailOrPhoneController.text = data.email ?? "";
-  //     passwordController.text = data.password ?? "";
-  //     setState(() {
-  //       rememberme = true;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
-       if(state is LoginSuccess){
-         Toast.success(context, "Login Successfully");
+        if (state is LoginSuccess) {
+          Toast.success(context, "Login Successfully");
           context.pushReplacement(AppRoutesPaths.rootView);
-       }
-       else if (state is LoginError) {
+        } else if (state is LoginError) {
           Toast.error(context, state.message);
         }
       },
@@ -151,5 +128,26 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         );
       },
     );
+  }
+  late final TextEditingController emailOrPhoneController;
+  late final TextEditingController passwordController;
+  late final GlobalKey<FormState> signinFormKey;
+
+  bool rememberme = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailOrPhoneController = TextEditingController();
+    passwordController = TextEditingController();
+    signinFormKey = GlobalKey<FormState>();
+  }
+
+  @override
+  void dispose() {
+    emailOrPhoneController.dispose();
+    passwordController.dispose();
+    signinFormKey.currentState?.dispose();
+    super.dispose();
   }
 }

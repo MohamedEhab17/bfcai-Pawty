@@ -17,6 +17,8 @@ import 'package:pawty/core/widgets/custom_title_with_divider.dart';
 import 'package:pawty/core/widgets/text_form_field_helper.dart';
 import 'package:pawty/core/widgets/toast.dart';
 import 'package:pawty/core/widgets/two_divider_separated_with_text.dart';
+import 'package:pawty/features/auth/data/models/request/user_model_dto.dart';
+import 'package:pawty/features/auth/presentation/view_model/profile_setup/profile_setup_cubit.dart';
 import 'package:pawty/features/auth/presentation/view_model/register/register_cubit.dart';
 
 class SignupViewBody extends StatefulWidget {
@@ -33,6 +35,13 @@ class _SignupViewBodyState extends State<SignupViewBody> {
       listener: (context, state) {
         if (state is RegisterSuccess) {
           Toast.success(context, "Register Successfully");
+          context.read<ProfileSetupCubit>().addUser(
+            userModelDto: UserModelDto(
+              email: emailOrPhoneController.text.trim(),
+              password: passwordController.text.trim(),
+              userName: usernameController.text.trim(),
+            ),
+          );
           context.pushReplacement(AppRoutesPaths.profileSetup);
 
           // });
@@ -172,6 +181,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     emailOrPhoneController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    signupFormKey.currentState?.dispose();
     super.dispose();
   }
 }

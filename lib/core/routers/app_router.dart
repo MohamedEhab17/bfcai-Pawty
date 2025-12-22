@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pawty/core/routers/app_route_paths.dart';
 import 'package:pawty/features/add_pet/presentation/view/add_pet_view.dart';
@@ -15,7 +17,9 @@ class AppRouter {
 
   static Future<void> initRouter() async {
     router = GoRouter(
-      initialLocation: AppRoutesPaths.login,
+      initialLocation: FirebaseAuth.instance.currentUser != null
+          ? AppRoutesPaths.appSectionView
+          : AppRoutesPaths.login,
       routes: [
         GoRoute(
           path: AppRoutesPaths.appSectionView,

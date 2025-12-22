@@ -67,10 +67,38 @@ class AuthFirebase {
     try {
       final id = FirebaseAuth.instance.currentUser!.uid;
       await getUsersCollection().doc(id).set(user);
-      return  NetworkSuccess();
+      return NetworkSuccess();
     } catch (e) {
-      return  NetworkError(message: e.toString());
+      return NetworkError(message: e.toString());
     }
-   
+  }
+
+  Future<NetworkResult<void>> updateUserProfile(
+    UserModelDto updatedUser,
+  ) async {
+    try {
+      final uid = FirebaseAuth.instance.currentUser!.uid;
+
+      final docSnap = await getUsersCollection().doc(uid).get();
+      if (!docSnap.exists) return NetworkError(message: 'User not found');
+
+      final currentUser = docSnap.data()!;
+      final newUser = updatedUser.copyWith(
+        userName: updatedUser.userName ?? currentUser.userName,
+        email: updatedUser.email ?? currentUser.email,
+        password: updatedUser.password ?? currentUser.password,
+        fullName: updatedUser.fullName ?? currentUser.fullName,
+        dateOfBirth: updatedUser.dateOfBirth ?? currentUser.dateOfBirth,
+        gender: updatedUser.gender ?? currentUser.gender,
+        country: updatedUser.country ?? currentUser.country,
+        imageUrl: updatedUser.imageUrl ?? currentUser.imageUrl,
+      );
+      await getUsersCollection()
+          .doc(uid)
+          .update(newUser.toJson());
+      return NetworkSuccess();
+    } catch (e) {
+      return NetworkError(message: e.toString());
+    }
   }
 }
