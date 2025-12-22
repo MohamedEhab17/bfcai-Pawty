@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:pawty/core/network/network.dart';
 import 'package:pawty/features/auth/data/models/request/register_request_dto.dart';
 import 'package:pawty/features/auth/data/repo/repository/auth_repository_contract.dart';

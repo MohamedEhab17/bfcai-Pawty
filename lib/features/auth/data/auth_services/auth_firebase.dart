@@ -34,18 +34,20 @@ class AuthFirebase {
         email: registerRequest.email!,
         password: registerRequest.password!,
       );
-      return NetworkSuccess();
+      return NetworkResult.success();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        return NetworkError(message: 'The password provided is too weak.');
+        return NetworkResult.error(
+          message: 'The password provided is too weak.',
+        );
       } else if (e.code == 'email-already-in-use') {
-        return NetworkError(
+        return NetworkResult.error(
           message: 'The account already exists for that email.',
         );
       }
-      return NetworkError(message: e.toString());
+      return NetworkResult.error(message: e.toString());
     } catch (e) {
-      return NetworkError(message: e.toString());
+      return NetworkResult.error(message: e.toString());
     }
   }
 }

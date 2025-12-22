@@ -32,8 +32,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
-          Toast.success(context, "Login Successfully");
-          context.goNamed(AppRoutesPaths.profileSetup);
+          Toast.success(context, "Register Successfully");
+          context.pushReplacement(AppRoutesPaths.profileSetup);
+
+          // });
         } else if (state is RegisterError) {
           Toast.error(context, state.message);
         }
@@ -130,7 +132,9 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                           CustomRichText(
                             secondText: 'sign in',
                             firstText: 'Don\'t have an account? ',
-                            onTap: () {},
+                            onTap: () {
+                              context.goNamed(AppRoutesPaths.login);
+                            },
                           ),
                           50.height,
                         ],

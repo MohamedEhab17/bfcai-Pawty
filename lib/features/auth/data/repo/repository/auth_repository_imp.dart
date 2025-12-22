@@ -9,15 +9,13 @@ class AuthRepositoryImp implements AuthRepositoryContract {
   const AuthRepositoryImp(this._authRemoteDataSourceContract);
   final AuthRemoteDataSourceContract _authRemoteDataSourceContract;
   @override
-  Future<NetworkResult<void>> register(
-    RegisterRequestDto registerRequestDto,
-  ) => _authRemoteDataSourceContract.register(registerRequestDto);
+  Future<NetworkResult<void>> register(RegisterRequestDto registerRequestDto) =>
+      _authRemoteDataSourceContract.register(registerRequestDto);
 
   @override
   Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto) =>
       _authRemoteDataSourceContract.login(loginRequestDto);
-   
-
 }
 
-AuthRepositoryContract repositoryInjectable() => AuthRepositoryImp(authRemoteInjectable());
+AuthRepositoryContract repositoryInjectable() =>
+    AuthRepositoryImp(authRemoteInjectable());
