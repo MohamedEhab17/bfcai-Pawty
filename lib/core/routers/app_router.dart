@@ -8,19 +8,19 @@ import 'package:pawty/features/details/presentation/view/details_view.dart';
 import 'package:pawty/features/favorite/presentation/view/favorite_view.dart';
 import 'package:pawty/features/home/presentation/view/home_view.dart';
 import 'package:pawty/features/onboarding/presentation/view/onboarding_view.dart';
-import 'package:pawty/features/profile_setup/presentation/view/profile_setup_view.dart';
+import 'package:pawty/features/auth/presentation/view/profile_setup_view.dart';
 
 class AppRouter {
   static late final GoRouter router;
 
   static Future<void> initRouter() async {
     router = GoRouter(
-      initialLocation: AppRoutesPaths.appSectionView,
+      initialLocation: AppRoutesPaths.login,
       routes: [
         GoRoute(
           path: AppRoutesPaths.appSectionView,
           name: '/',
-          builder: (context, state) =>  AppSectionView(),
+          builder: (context, state) => AppSectionView(),
         ),
         GoRoute(
           path: AppRoutesPaths.login,

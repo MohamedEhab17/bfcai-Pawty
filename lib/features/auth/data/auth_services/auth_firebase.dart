@@ -7,7 +7,7 @@ class AuthFirebase {
   AuthFirebase._();
   static AuthFirebase? _instance;
   static AuthFirebase get instance => _instance ??= AuthFirebase._();
-   Future<NetworkResult<void>> login(LoginRequestDto loginRequest) async {
+  Future<NetworkResult<void>> login(LoginRequestDto loginRequest) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: loginRequest.email!,
@@ -16,17 +16,19 @@ class AuthFirebase {
       return NetworkSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        return NetworkError('No user found for that email.');
+        return NetworkError(message: 'No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        return NetworkError('Wrong password provided for that user.');
+        return NetworkError(message: 'Wrong password provided for that user.');
       }
-      return NetworkError(e.toString());
+      return NetworkError(message: e.toString());
     } catch (e) {
-      return NetworkError(e.toString());
+      return NetworkError(message: e.toString());
     }
   }
 
-   Future<NetworkResult<void>> register(RegisterRequestDto registerRequest) async {
+  Future<NetworkResult<void>> register(
+    RegisterRequestDto registerRequest,
+  ) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: registerRequest.email!,
@@ -35,13 +37,15 @@ class AuthFirebase {
       return NetworkSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-       return NetworkError('The password provided is too weak.');
+        return NetworkError(message: 'The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        return NetworkError('The account already exists for that email.');
+        return NetworkError(
+          message: 'The account already exists for that email.',
+        );
       }
-       return NetworkError(e.toString());
+      return NetworkError(message: e.toString());
     } catch (e) {
-     return NetworkError(e.toString());
+      return NetworkError(message: e.toString());
     }
   }
 }

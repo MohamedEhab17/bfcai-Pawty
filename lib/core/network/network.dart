@@ -1,5 +1,11 @@
 sealed class NetworkResult<T> {
   const NetworkResult();
+
+  const factory NetworkResult.success({T? data}) =
+      NetworkSuccess<T>;
+
+  const factory NetworkResult.error({required String message}) =
+      NetworkError<T>;
 }
 
 class NetworkSuccess<T> extends NetworkResult<T> {
@@ -9,5 +15,8 @@ class NetworkSuccess<T> extends NetworkResult<T> {
 
 class NetworkError<T> extends NetworkResult<T> {
   final String message;
-  const NetworkError(this.message);
+  const NetworkError({required this.message});
+
+  @override
+  String toString() => message;
 }

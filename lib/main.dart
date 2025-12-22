@@ -4,20 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/routers/app_router.dart';
+import 'package:pawty/features/auth/data/auth_services/auth_firebase.dart';
+import 'package:pawty/features/auth/data/models/request/register_request_dto.dart';
+import 'package:pawty/features/auth/data/repo/repository/auth_repository_imp.dart';
+import 'package:pawty/features/auth/presentation/view_model/register/register_cubit.dart';
 import 'package:pawty/shared/popup_form/view_model/cubit/popup_form_cubit_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await AppRouter.initRouter();
+  // await AuthFirebase.instance.register(RegisterRequestDto(email: 'mohamedehap172004@gmail.com', password: 'Me123456'));
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
       builder: (context) => MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => PopupFormCubit())],
+        providers: [
+          BlocProvider(create: (context) => PopupFormCubit()),
+          BlocProvider(
+            create: (context) => RegisterCubit(repositoryInjectable()),
+          ),
+        ],
         child: Pawty(),
       ), // Wrap your app
     ),

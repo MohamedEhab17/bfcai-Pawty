@@ -6,7 +6,7 @@ class RegisterRequestDto {
   String ?confirmPassword;
   String ?userName;
    Map<String, dynamic> toJson( ) {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['username'] = userName;
     data['email'] = email;
     data['password'] =password;

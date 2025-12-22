@@ -4,5 +4,5 @@ import 'package:pawty/features/auth/data/models/request/register_request_dto.dar
 
 abstract class AuthRemoteDataSourceContract {
   Future<NetworkResult<void>> register(RegisterRequestDto registerRequestDto);
-   Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto);
+  Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto);
 }

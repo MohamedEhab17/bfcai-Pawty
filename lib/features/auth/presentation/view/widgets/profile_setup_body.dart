@@ -13,7 +13,7 @@ import 'package:pawty/core/widgets/custom_container_fields.dart';
 import 'package:pawty/core/widgets/custom_elevated_button.dart';
 import 'package:pawty/core/widgets/custom_modal_progress_hud.dart';
 import 'package:pawty/core/widgets/text_form_field_helper.dart';
-import 'package:pawty/features/profile_setup/presentation/view/widgets/custom_upload_image_widget.dart';
+import 'package:pawty/features/auth/presentation/view/widgets/custom_upload_image_widget.dart';
 import 'package:pawty/shared/popup_form/view/custom_drop_down.dart';
 import 'package:pawty/shared/popup_form/view_model/cubit/popup_form_cubit_cubit.dart';
 import 'package:pawty/shared/popup_form/view_model/cubit/popup_form_state.dart';
