@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pawty/core/network/network.dart';
 import 'package:pawty/features/auth/data/models/request/login_request_dto.dart';
 import 'package:pawty/features/auth/data/models/request/register_request_dto.dart';
+import 'package:pawty/features/auth/data/models/request/user_model_dto.dart';
 
 class AuthFirebase {
   AuthFirebase._();
@@ -49,5 +51,26 @@ class AuthFirebase {
     } catch (e) {
       return NetworkResult.error(message: e.toString());
     }
+  }
+
+  CollectionReference<UserModelDto> getUsersCollection() {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .withConverter<UserModelDto>(
+          fromFirestore: (snapshot, _) =>
+              UserModelDto.fromJson(snapshot.data()!),
+          toFirestore: (user, _) => user.toJson(),
+        );
+  }
+
+  Future<NetworkResult<void>> addUser(UserModelDto user) async {
+    try {
+      final id = FirebaseAuth.instance.currentUser!.uid;
+      await getUsersCollection().doc(id).set(user);
+      return  NetworkSuccess();
+    } catch (e) {
+      return  NetworkError(message: e.toString());
+    }
+   
   }
 }

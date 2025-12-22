@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/routers/app_router.dart';
-import 'package:pawty/features/auth/data/auth_services/auth_firebase.dart';
-import 'package:pawty/features/auth/data/models/request/register_request_dto.dart';
 import 'package:pawty/features/auth/data/repo/repository/auth_repository_imp.dart';
+import 'package:pawty/features/auth/presentation/view_model/login/login_cubit.dart';
+import 'package:pawty/features/auth/presentation/view_model/profile_setup/profile_setup_cubit.dart';
 import 'package:pawty/features/auth/presentation/view_model/register/register_cubit.dart';
 import 'package:pawty/shared/popup_form/view_model/cubit/popup_form_cubit_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,6 +25,12 @@ void main() async {
           BlocProvider(create: (context) => PopupFormCubit()),
           BlocProvider(
             create: (context) => RegisterCubit(repositoryInjectable()),
+          ),
+           BlocProvider(
+            create: (context) => LoginCubit(repositoryInjectable()),
+          ),
+           BlocProvider(
+            create: (context) =>ProfileSetupCubit(repositoryInjectable()),
           ),
         ],
         child: Pawty(),

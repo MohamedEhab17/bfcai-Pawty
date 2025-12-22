@@ -2,6 +2,7 @@ import 'package:pawty/core/network/network.dart';
 import 'package:pawty/features/auth/data/auth_services/auth_firebase.dart';
 import 'package:pawty/features/auth/data/models/request/login_request_dto.dart';
 import 'package:pawty/features/auth/data/models/request/register_request_dto.dart';
+import 'package:pawty/features/auth/data/models/request/user_model_dto.dart';
 import 'package:pawty/features/auth/data/repo/data_source/auth_data_source_contract.dart';
 
 class AuthRemoteDataSourceImp implements AuthRemoteDataSourceContract {
@@ -16,6 +17,10 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSourceContract {
   @override
   Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto) =>
       _authFirebase.login(loginRequestDto);
+
+  @override
+  Future<NetworkResult<void>> addUser(UserModelDto userModelDto) =>
+      _authFirebase.addUser(userModelDto);
 }
 
 

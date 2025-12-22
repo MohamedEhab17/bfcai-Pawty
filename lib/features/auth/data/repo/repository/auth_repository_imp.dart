@@ -1,6 +1,7 @@
 import 'package:pawty/core/network/network.dart';
 import 'package:pawty/features/auth/data/models/request/login_request_dto.dart';
 import 'package:pawty/features/auth/data/models/request/register_request_dto.dart';
+import 'package:pawty/features/auth/data/models/request/user_model_dto.dart';
 import 'package:pawty/features/auth/data/repo/data_source/auth_data_source_contract.dart';
 import 'package:pawty/features/auth/data/repo/data_source/auth_data_source_imp.dart';
 import 'package:pawty/features/auth/data/repo/repository/auth_repository_contract.dart';
@@ -15,6 +16,9 @@ class AuthRepositoryImp implements AuthRepositoryContract {
   @override
   Future<NetworkResult<void>> login(LoginRequestDto loginRequestDto) =>
       _authRemoteDataSourceContract.login(loginRequestDto);
+      
+        @override
+        Future<NetworkResult<void>> addUser(UserModelDto userModelDto)=> _authRemoteDataSourceContract.addUser(userModelDto);
 }
 
 AuthRepositoryContract repositoryInjectable() =>
