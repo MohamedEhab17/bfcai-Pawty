@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pawty/core/routers/app_router.dart';
+import 'package:pawty/features/add_pet/data/repo/repository/add_pet_repository_imp.dart';
+import 'package:pawty/features/add_pet/presentation/view_model/cubit/add_pet_cubit.dart';
 import 'package:pawty/features/auth/data/repo/repository/auth_repository_imp.dart';
 import 'package:pawty/features/auth/presentation/view_model/login/login_cubit.dart';
 import 'package:pawty/features/auth/presentation/view_model/profile_setup/profile_setup_cubit.dart';
@@ -29,6 +31,9 @@ void main() async {
           BlocProvider(create: (context) => LoginCubit(repositoryInjectable())),
           BlocProvider(
             create: (context) => ProfileSetupCubit(repositoryInjectable()),
+          ),
+          BlocProvider(
+            create: (context) => AddPetCubit(addPetRepositoryInjectable()),
           ),
         ],
         child: Pawty(),
