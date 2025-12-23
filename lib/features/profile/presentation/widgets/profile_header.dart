@@ -1,11 +1,13 @@
+import 'package:cached_network_image_widget/cached_network_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:pawty/core/constants/app_colors.dart';
 import 'package:pawty/core/utils/app_images.dart';
 import 'package:pawty/core/utils/app_styles.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key, this.title = "Mohamed Ehab"});
+  const ProfileHeader({super.key, this.title = " ", this.imageUrl});
   final String title;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,8 @@ class ProfileHeader extends StatelessWidget {
         return SliverAppBar(
           backgroundColor: AppColors.pink[1],
           pinned: true,
-          floating: true, // ← ده اللي هيخلي leading يظهر بدري
-          snap: false, // ← مهم يفضل false
+          floating: true,
+          snap: false,
           stretch: false,
           automaticallyImplyLeading: false,
           expandedHeight: 220,
@@ -27,10 +29,12 @@ class ProfileHeader extends StatelessWidget {
           leading: isCollapsed
               ? Padding(
                   padding: const EdgeInsets.only(left: 12),
-                  child: CircleAvatar(
-                    radius: 18,
-                    backgroundImage: AssetImage(AssetsImages.imagesAvatar),
-                  ),
+                  child: isCollapsed
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 12),
+                          child: _profileAvatar(18),
+                        )
+                      : null,
                 )
               : null,
           centerTitle: isCollapsed ? false : true,
@@ -55,19 +59,35 @@ class ProfileHeader extends StatelessWidget {
                   Container(color: AppColors.pink[1]),
 
                   if (!isCollapsed)
-                    Positioned(
-                      bottom: -offsetY,
-                      child: CircleAvatar(
-                        radius: radius,
-                        backgroundImage: AssetImage(AssetsImages.imagesAvatar),
-                      ),
-                    ),
+                    Positioned(bottom: -offsetY, child: _profileAvatar(radius)),
                 ],
               );
             },
           ),
         );
       },
+    );
+  }
+
+  Widget _profileAvatar(double radius) {
+    return CircleAvatar(
+      radius: radius,
+      backgroundColor: AppColors.white,
+      child: ClipOval(
+        child: imageUrl != null && imageUrl!.isNotEmpty
+            ? CachedNetworkImageWidget(
+                imageUrl!,
+                width: radius * 2,
+                height: radius * 2,
+                fit: BoxFit.cover,
+              )
+            : Image.asset(
+                AssetsImages.imagesAvatar,
+                width: radius * 2,
+                height: radius * 2,
+                fit: BoxFit.cover,
+              ),
+      ),
     );
   }
 }

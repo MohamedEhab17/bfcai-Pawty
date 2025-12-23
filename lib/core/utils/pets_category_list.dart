@@ -1,5 +1,6 @@
 class ConstantLists {
   static const List<String> petCategories = [
+    'All',
     'Cats',
     'Dogs',
     'Birds',
@@ -9,10 +10,7 @@ class ConstantLists {
     'Fish',
     'Other',
   ];
-static  const List<String> gender = [
-  'Male',
-  'Female',
-];
+  static const List<String> gender = ['Male', 'Female'];
   static const List<String> countries = [
     "USA",
     "Egypt",

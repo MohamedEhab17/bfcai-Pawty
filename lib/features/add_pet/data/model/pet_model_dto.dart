@@ -1,3 +1,5 @@
+import 'package:pawty/features/auth/data/models/request/user_model_dto.dart';
+
 class PetModelDto {
   String? id;
   String? image;
@@ -8,6 +10,7 @@ class PetModelDto {
   String? description;
   String? location;
   String? userId;
+  UserModelDto? user;
 
   PetModelDto({
     this.id,
@@ -19,19 +22,20 @@ class PetModelDto {
     this.description,
     this.location,
     this.userId,
+    this.user,
   });
 
-  PetModelDto.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image = json['image'];
-    name = json['name'];
-    age = json['age'];
-    gender = json['gender'];
-    type = json['type'];
-    description = json['description'];
-    location = json['location'];
-    userId = json['userId'];
-  }
+  // PetModelDto.fromJson(Map<String, dynamic> json) {
+  //   id = json['id'];
+  //   image = json['image'];
+  //   name = json['name'];
+  //   age = json['age'];
+  //   gender = json['gender'];
+  //   type = json['type'];
+  //   description = json['description'];
+  //   location = json['location'];
+  //   userId = json['userId'];
+  // }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -44,7 +48,22 @@ class PetModelDto {
     data['description'] = description;
     data['location'] = location;
     data['userId'] = userId;
+    if (user != null) {
+      data['user'] = user!.toJson();
+    }
     return data;
   }
-  
+
+  PetModelDto.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    image = json['image'];
+    name = json['name'];
+    age = json['age'];
+    gender = json['gender'];
+    type = json['type'];
+    description = json['description'];
+    location = json['location'];
+    userId = json['userId'];
+    user = json['user'] != null ? UserModelDto.fromJson(json['user']) : null;
+  }
 }

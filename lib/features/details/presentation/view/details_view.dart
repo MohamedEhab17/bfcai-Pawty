@@ -8,12 +8,14 @@ import 'package:pawty/core/utils/app_images.dart';
 import 'package:pawty/core/utils/app_styles.dart';
 import 'package:pawty/core/widgets/custom_elevated_button.dart';
 import 'package:pawty/core/widgets/paws_separator.dart';
+import 'package:pawty/features/add_pet/data/model/pet_model_dto.dart';
 import 'package:pawty/features/details/presentation/view/widgets/details_header.dart';
 import 'package:pawty/features/details/presentation/view/widgets/icon_card.dart';
 import 'package:pawty/features/details/presentation/view/widgets/info_card.dart';
 
 class DetailsView extends StatelessWidget {
-  const DetailsView({super.key});
+  const DetailsView({super.key, this.appPet});
+  final PetModelDto? appPet;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class DetailsView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DetailsHeader(),
+            DetailsHeader(image: appPet?.image),
             10.height,
             PawsSeparator(),
             19.height,
@@ -40,7 +42,10 @@ class DetailsView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Motchi', style: AppStyles.styleFredoka40),
+                  Text(
+                    appPet?.name ?? 'Motchi',
+                    style: AppStyles.styleFredoka40,
+                  ),
                   3.height,
                   Row(
                     spacing: 5.w,
@@ -49,7 +54,7 @@ class DetailsView extends StatelessWidget {
                       Spacer(),
                       SvgPicture.asset(AssetsIcons.iconsLocation),
                       Text(
-                        'Benha, Egypt',
+                        appPet?.location ?? 'Benha, Egypt',
                         style: AppStyles.styleInter16blackOpacity,
                       ),
                     ],
@@ -59,14 +64,22 @@ class DetailsView extends StatelessWidget {
                     spacing: 22.w,
                     runSpacing: 15.h,
                     children: [
-                      InfoCard(firstText: 'Age', secondText: '4Y'),
+                      InfoCard(
+                        firstText: 'Age',
+                        secondText: appPet?.age ?? '4Y',
+                      ),
                       InfoCard(
                         firstText: 'Sex',
                         isIcon: true,
-                        iconData: Icons.male,
+                        iconData: appPet?.gender == 'Female'
+                            ? Icons.female
+                            : Icons.male,
                       ),
                       InfoCard(firstText: 'Weight', secondText: '2Kg'),
-                      InfoCard(firstText: 'Type', secondText: 'Cat'),
+                      InfoCard(
+                        firstText: 'Type',
+                        secondText: appPet?.type ?? 'Cat',
+                      ),
                     ],
                   ),
                   15.height,
@@ -74,21 +87,25 @@ class DetailsView extends StatelessWidget {
                     contentPadding: EdgeInsets.zero,
                     leading: CircleAvatar(
                       radius: 22.r,
-                      backgroundImage: AssetImage(AssetsImages.imagesAvatar),
+                      backgroundImage: appPet?.user?.imageUrl != null
+                          ? NetworkImage(appPet!.user!.imageUrl!)
+                          : AssetImage(AssetsImages.imagesAvatar)
+                                as ImageProvider,
                     ),
 
                     title: Text(
-                      'Rawan Mohamed',
+                      appPet?.user?.fullName ?? 'Owner',
                       style: AppStyles.styleInter16black1,
                     ),
                     subtitle: Text(
-                      'Benha, Egypt',
+                      appPet?.location ?? 'Benha, Egypt',
                       style: AppStyles.styleInter10Grey,
                     ),
                   ),
                   10.height,
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit mi eget ipsum volutpat, ac luctus libero gravida. Quisque ullamcorper interdum metus, sed cursus magna pharetra imperdiet. Nunc at tempor metus. In interdum fermentum nunc, sed semper elit interdum sed. Ut eget nisi leo. Sed sollicitudin, diam vel viverra efficitur, dolor libero aliquam nisl, at rutrum nisi quam non libero.',
+                    appPet?.description ??
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                     style: AppStyles.styleInter12Grey,
                     softWrap: true,
                     maxLines: 7,

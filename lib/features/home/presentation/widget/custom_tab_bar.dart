@@ -5,7 +5,8 @@ import 'package:pawty/core/utils/pets_category_list.dart';
 import 'package:pawty/features/home/presentation/widget/custom_category_widget.dart';
 
 class CustomTabBar extends StatefulWidget {
-  const CustomTabBar({super.key});
+  const CustomTabBar({super.key, required this.onCategorySelected});
+  final Function(String) onCategorySelected;
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
@@ -21,7 +22,9 @@ class _CustomTabBarState extends State<CustomTabBar>
         height: 55.h,
         child: TabBar(
           controller: _tabController,
-          onTap: (int index) {},
+          onTap: (int index) {
+            widget.onCategorySelected(ConstantLists.petCategories[index]);
+          },
           isScrollable: true,
           padding: EdgeInsets.zero,
           splashBorderRadius: BorderRadius.circular(100.r),

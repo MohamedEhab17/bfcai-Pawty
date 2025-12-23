@@ -9,11 +9,12 @@ class CustomListTileWIdget extends StatelessWidget {
     super.key,
     required this.title,
     required this.iconPath,
-    this.onTap,
+    this.onTap,  this.withArrow=true,
   });
   final String title;
   final String iconPath;
   final void Function()? onTap;
+  final bool withArrow;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -27,11 +28,11 @@ class CustomListTileWIdget extends StatelessWidget {
         color: AppColors.pink,
       ),
       title: Text(title, style: AppStyles.styleFredoka12),
-      trailing: Icon(
+      trailing:withArrow? Icon(
         IconlyBold.arrowRight3,
         size: 20.sp,
         color: AppColors.pink,
-      ),
+      ):null,
     );
   }
 }

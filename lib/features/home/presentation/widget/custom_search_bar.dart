@@ -7,7 +7,8 @@ import 'package:pawty/core/utils/app_styles.dart';
 import 'package:pawty/core/widgets/text_form_field_helper.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
+  const CustomSearchBar({super.key, this.onChanged});
+  final void Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class CustomSearchBar extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormFieldHelper(
+              onChanged: onChanged,
               hint: "Search your favorite pet",
               borderRadius: BorderRadius.circular(100.r),
               borderColor: AppColors.grey,

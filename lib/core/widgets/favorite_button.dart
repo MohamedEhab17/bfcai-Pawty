@@ -2,30 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:pawty/core/constants/app_colors.dart';
 
-class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({super.key, this.size, this.inactiveIconColor});
+class FavoriteButton extends StatelessWidget {
+  const FavoriteButton({
+    super.key,
+    this.size,
+    this.inactiveIconColor,
+    this.isFavorite = false,
+    this.onTap,
+  });
   final double? size;
   final Color? inactiveIconColor;
+  final bool isFavorite;
+  final VoidCallback? onTap;
 
-  @override
-  State<FavoriteButton> createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        isFavorite = !isFavorite;
-        setState(() {});
-      },
+      onTap: onTap,
       child: Icon(
         isFavorite ? IconlyBold.heart : IconlyLight.heart,
-        color: isFavorite
-            ? AppColors.pink
-            : widget.inactiveIconColor ?? Colors.white,
-        size: widget.size ?? 20,
+        color: isFavorite ? AppColors.pink : inactiveIconColor ?? Colors.white,
+        size: size ?? 20,
       ),
     );
   }

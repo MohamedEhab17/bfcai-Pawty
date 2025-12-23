@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:pawty/features/add_pet/data/model/pet_model_dto.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:pawty/core/routers/app_route_paths.dart';
 import 'package:pawty/features/add_pet/presentation/view/add_pet_view.dart';
@@ -65,7 +66,10 @@ class AppRouter {
         GoRoute(
           path: AppRoutesPaths.detailsView,
           name: 'detailsView',
-          builder: (context, state) => DetailsView(),
+          builder: (context, state) {
+            final pet = state.extra as PetModelDto?;
+            return DetailsView(appPet: pet);
+          },
         ),
       ],
     );

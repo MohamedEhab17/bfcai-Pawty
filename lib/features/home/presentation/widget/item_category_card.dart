@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pawty/features/favorite/presentation/view_model/favorite/favorite_cubit.dart';
+import 'package:pawty/features/add_pet/data/model/pet_model_dto.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pawty/core/constants/app_colors.dart';
@@ -10,9 +13,15 @@ import 'package:pawty/core/utils/app_styles.dart';
 import 'package:pawty/core/widgets/favorite_button.dart';
 
 class ItemCategoryCard extends StatefulWidget {
-  const ItemCategoryCard({super.key, this.detailsTap, this.favoriteTap});
+  const ItemCategoryCard({
+    super.key,
+    this.detailsTap,
+    this.favoriteTap,
+    this.pet,
+  });
   final void Function()? detailsTap;
   final Function()? favoriteTap;
+  final PetModelDto? pet;
 
   @override
   State<ItemCategoryCard> createState() => _ItemCategoryCardState();
@@ -33,7 +42,9 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
             Colors.black.withAlpha(127),
             BlendMode.darken,
           ),
-          image: AssetImage(AssetsImages.imagesDog),
+          image: widget.pet?.image != null
+              ? NetworkImage(widget.pet!.image!)
+              : AssetImage(AssetsImages.imagesDog) as ImageProvider,
           fit: BoxFit.cover,
         ),
       ),
@@ -44,12 +55,15 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
             children: [
               CircleAvatar(
                 radius: 9.r,
-                child: Image.asset(AssetsImages.imagesAvatar),
-              ),
+                backgroundImage: widget.pet?.user?.imageUrl != null
+                    ? NetworkImage(widget.pet!.user!.imageUrl!)
+                    : AssetImage(AssetsImages.imagesAvatar) as ImageProvider,
+              ), // User image placeholder
               6.width,
               Expanded(
                 child: Text(
-                  'Rawan',
+                  widget.pet?.user?.fullName ??
+                      'Owner', // Placeholder for owner name
                   style: AppStyles.styleInter12White,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -59,10 +73,9 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
               Icon(Icons.more_vert, color: AppColors.white),
             ],
           ),
-          // SizedBox(height: 78.h),
           Spacer(),
           Text(
-            "Milo",
+            widget.pet?.name ?? "Milo",
             style: AppStyles.styleFredoka32.copyWith(height: 1.2),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -78,7 +91,7 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Text(
-                        "Cavapoo dog",
+                        widget.pet?.type ?? "Cavapoo dog",
                         style: AppStyles.styleInter16White,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -86,7 +99,20 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
                     ),
                     Row(
                       children: [
-                        FavoriteButton(),
+                        BlocBuilder<FavoriteCubit, FavoriteState>(
+                          builder: (context, state) {
+                            final cubit = context.read<FavoriteCubit>();
+                            final isFav = cubit.isFavorite(widget.pet?.id);
+                            return FavoriteButton(
+                              isFavorite: isFav,
+                              onTap: () {
+                                if (widget.pet != null) {
+                                  cubit.toggleFavorite(widget.pet!);
+                                }
+                              },
+                            );
+                          },
+                        ),
                         6.width,
                         Text(
                           'add to favorites',
@@ -101,7 +127,7 @@ class _ItemCategoryCardState extends State<ItemCategoryCard> {
               // Spacer(),
               ElevatedButton(
                 onPressed: () {
-                  context.push(AppRoutesPaths.detailsView);
+                  context.push(AppRoutesPaths.detailsView, extra: widget.pet);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.pink[2]!.withAlpha(178),
