@@ -2,7 +2,7 @@
   <img src="assets/images/logo.png" width="120" alt="Pawty Logo"/>
 </p>
 
-<h1 align="center">🐾 Pawty</h1>
+<h1 align="center">Pawty</h1>
 
 <p align="center">
   <b>Your Ultimate Pet Adoption Companion — Built with Flutter & Firebase</b>
